@@ -1,0 +1,121 @@
+:root{
+    --bg-body: #2c3e50;
+    --bg-btn-primary: #c0392b;
+    --bg-btn-danger: #00aeef;
+    --color-btn: #fff;
+}
+
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: var(--bg-body);
+}
+
+.btn{
+    --btn-height: 150px;
+    --translate: -10px;
+    height: var(--btn-height);
+    width: calc(var(--btn-height) * 3);
+    color: var(--color-btn);
+    border: none;
+    outline: none;
+    font-size: 45px;
+    cursor: pointer;
+    position: relative;
+    background-color: transparent;
+}
+
+.btn-primary span{
+    background-color: var(--bg-btn-primary);
+}
+
+.btn-danger span{
+    background-color: var(--bg-btn-danger);
+}
+
+.btn span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    clip-path: polygon(10% 0%, 100% 0%, 90% 100%, 0% 100%);
+}
+
+.btn > span:nth-child(2){
+    display: grid;
+    place-items: center;
+    transform: translate(var(--translate), var(--translate));
+    transition: transform 0.2s ease-in-out;
+}
+
+.btn > span:nth-child(1){
+    opacity: 0.6;
+}
+
+.btn:hover > span:nth-child(2){
+    transform: translate(
+        calc(var(--translate) / 2),
+        calc(var(--translate) / 2)
+    );
+}
+
+.btn:active > span:nth-child(2){
+    transform: translate(0, 0);
+}
+
+
+
+.heart {
+    position: relative;
+    margin: 50px auto;
+    height: 170px;
+    width: 200px;
+    opacity: 0.9;
+}
+
+.heart:before, .heart:after {
+    content: '';
+    position: absolute;
+    background: #c0392b;
+    width: 100px;
+    height: 160px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.heart:before {
+    left: 100px;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+                0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.heart:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+@keyframes animate {
+    0% {
+        transform: scale(1);
+    }
+    30% {
+        transform: scale(0.8);
+    }
+    60% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.beat {
+    animation: animate 1s infinite;
+}
